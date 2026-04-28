@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 enum GenderEnum {
   female = "female",
@@ -13,22 +13,37 @@ interface IFormInput {
   gender: GenderEnum;
 }
 
+interface FormProps {
+  name: string;
+  email: string;
+  role: string;
+  password: string;
+}
+
 const RegisterPage = () => {
-  const { register, handleSubmit, watch } = useForm({
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
-      role: "learn", // ডিফল্ট ভ্যালু
+      name: "",
+      email: "",
+      role: "learn",
+      password: "",
     },
   });
 
   // বর্তমানে কোনটি সিলেক্ট করা আছে তা ট্র্যাক করা
   const selectedRole = watch("role");
 
-  const onSubmit = (data) => {
+  const onSubmit: SubmitHandler<FormProps> = (data: FormProps) => {
     console.log("Selected Data:", data);
   };
 
   return (
-    <div className="max-w-md mx-auto mt-5 space-y-2">
+    <div className="max-w-md mx-auto mt-5 space-y-2 border p-5 bg-white text-black ">
       {/* head */}
       <div>
         <h3 className="text-2xl font-bold">Create a account</h3>
@@ -50,22 +65,28 @@ const RegisterPage = () => {
 
       {/* register form */}
       <div>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div>
             <label className="block">Student Name</label>
             <input
-              type="studentName"
+              type="text"
+              {...register("name")}
               placeholder="Write your name"
               className="border border-gray-300 outline-0 w-full p-2 "
+              required
+              suppressHydrationWarning
             />
           </div>
 
           <div>
             <label className="block"> Email Address</label>
             <input
-              type="studentEmail"
+              type="email"
+              {...register("email")}
               placeholder="example@gmail.com"
               className="border border-gray-300 outline-0 w-full p-2 "
+              required
+              suppressHydrationWarning
             />
           </div>
 
@@ -135,6 +156,29 @@ const RegisterPage = () => {
               </div>
             </label>
           </div>
+
+          {/* password */}
+          <div>
+            <label className="block">Password</label>
+
+            <input
+              type="password"
+              {...register("password", {
+                required: "Password is required",
+                minLength: {
+                  value: 6,
+                  message: "Password must be at least 6 characters",
+                },
+              })}
+              placeholder="Enter password"
+              className="border border-gray-300 outline-0 w-full p-2"
+              suppressHydrationWarning
+            />
+
+            {errors.password && <p>{errors.password.message}</p>}
+          </div>
+
+          {/* button  */}
           <input
             type="submit"
             value="Register"
