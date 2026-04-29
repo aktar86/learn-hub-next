@@ -25,17 +25,25 @@ const LoginPage = () => {
   });
 
   const onSubmit: SubmitHandler<loginData> = async (data: loginData) => {
-    const email = data.email;
-    const password = data.password;
+    const { email, password } = data;
     setLoading(true);
 
     try {
-      const result = signIn("credentials", {
+      const result = await signIn("credentials", {
         email,
         password,
         redirect: false,
         callbackUrl,
       });
+
+      if (result?.error) {
+        console.log(result.error);
+        // show error toast here
+        return;
+      }
+
+      // success হলে redirect
+      router.push(callbackUrl || "/");
     } catch (error) {
       console.log(error);
     } finally {
@@ -88,7 +96,7 @@ const LoginPage = () => {
 
           <input
             type="submit"
-            value="Login"
+            value={loading ? "Login..." : "Login"}
             className="p-2 text-center w-full bg-primary text-white "
           />
         </form>

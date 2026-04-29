@@ -1,27 +1,46 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { loginUser } from "../action/server/auth";
 
-export const authOptions = {
-  // Configure one or more authentication providers
+// ইন্টারফেসটি authorize ফাংশনের ভেতরে ব্যবহারের জন্য
+interface LoginProps {
+  email?: string;
+  password?: string;
+}
+
+export const authOptions: NextAuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       name: "Credentials",
-
+      // credentials অবজেক্ট খালি রাখলে রানটাইমে সমস্যা হতে পারে,
+      // তাই এখানে টাইপগুলো ডিফাইন করে দেওয়া ভালো
       credentials: {
-        // username: { label: "Username", type: "text", placeholder: "jsmith" },
-        // password: { label: "Password", type: "password" },
+        email: { label: "Email", type: "email" },
+        password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
-        const user = { id: "1", name: "J Smith", email: "jsmith@example.com" };
+      async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) return null;
+
+        const user = await loginUser({
+          email: credentials.email,
+          password: credentials.password,
+        });
 
         if (user) {
-          return user;
-        } else {
-          return null;
+          // এরর সমাধান: _id কে id হিসেবে রিটার্ন করুন
+          return {
+            id: user._id.toString(), // NextAuth-এর জন্য 'id' প্রয়োজন
+            email: user.email,
+            name: user.name,
+            // অন্য যেসব ডাটা প্রয়োজন...
+          };
         }
+        return null;
       },
     }),
   ],
 };
 
-export default NextAuth(authOptions);
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

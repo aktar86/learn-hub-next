@@ -1,4 +1,7 @@
 "use client";
+import { postUser } from "@/src/action/server/auth";
+import { useRouter, useSearchParams } from "next/navigation";
+
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
@@ -35,11 +38,21 @@ const RegisterPage = () => {
     },
   });
 
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callBackUrl = searchParams.get("callbackUrl") || "/";
+
   // বর্তমানে কোনটি সিলেক্ট করা আছে তা ট্র্যাক করা
   const selectedRole = watch("role");
 
-  const onSubmit: SubmitHandler<FormProps> = (data: FormProps) => {
+  const onSubmit: SubmitHandler<FormProps> = async (data: FormProps) => {
     console.log("Selected Data:", data);
+
+    const result = await postUser(data);
+    if (result?.insertedId) {
+      alert("successfull. Please login");
+      router.push(callBackUrl || "/login");
+    }
   };
 
   return (
