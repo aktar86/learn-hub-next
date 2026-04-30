@@ -5,7 +5,9 @@ import React from "react";
 const LoginBtn = () => {
   return (
     <Link href="/login">
-      <button>Login</button>
+      <button className="bg-secondary text-white px-4 py-2 rounded">
+        Login
+      </button>
     </Link>
   );
 };

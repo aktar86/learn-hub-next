@@ -4,7 +4,9 @@ import React from "react";
 const RegisterBtn = () => {
   return (
     <Link href="/register">
-      <button>Register</button>
+      <button className="bg-primary text-white px-4 py-2 rounded">
+        Register
+      </button>
     </Link>
   );
 };

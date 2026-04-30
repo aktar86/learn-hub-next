@@ -3,8 +3,12 @@ import Logo from "../Logo/Logo";
 import Navlink from "./Navlink";
 import LoginBtn from "../Auth/LoginBtn";
 import RegisterBtn from "../Auth/RegisterBtn";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/src/lib/authOptions";
+import LogoutBtn from "../Auth/LogoutBtn";
+import AuthBtnNav from "../Auth/AuthBtnNav";
 
-const Navbar = () => {
+const Navbar = async () => {
   const links = (
     <>
       <li>
@@ -30,10 +34,7 @@ const Navbar = () => {
           </ul>
         </nav>
         {/* auth btn */}
-        <div className=" flex justify-center items-center space-x-3">
-          <LoginBtn />
-          <RegisterBtn />
-        </div>
+        <AuthBtnNav></AuthBtnNav>
       </div>
     </header>
   );

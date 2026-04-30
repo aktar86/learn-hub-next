@@ -3,6 +3,7 @@ import { signIn } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import GoogleLogin from "./GoogleLogin";
 
 interface loginData {
   email: string;
@@ -43,7 +44,7 @@ const LoginPage = () => {
       }
 
       // success হলে redirect
-      router.push(callbackUrl || "/");
+      router.push(callbackUrl);
     } catch (error) {
       console.log(error);
     } finally {
@@ -58,6 +59,7 @@ const LoginPage = () => {
         <p>Please enter your details to sign in.</p>
       </div>
       {/* social login */}
+      <GoogleLogin />
       {/* or operator */}
       <div className="flex justify-between items-center gap-5">
         <hr className="border border-gray-300 grow" />{" "}

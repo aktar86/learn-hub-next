@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import GoogleLogin from "./GoogleLogin";
 
 enum GenderEnum {
   female = "female",
@@ -51,7 +52,7 @@ const RegisterPage = () => {
     const result = await postUser(data);
     if (result?.insertedId) {
       alert("successfull. Please login");
-      router.push(callBackUrl || "/login");
+      router.push(callBackUrl);
     }
   };
 
@@ -64,10 +65,7 @@ const RegisterPage = () => {
       </div>
 
       {/* google login */}
-      <div>
-        {/* Social icon will be available here */}
-        {/* google login */}
-      </div>
+      <GoogleLogin></GoogleLogin>
 
       {/* or operator */}
       <div className="flex justify-between items-center gap-5">
