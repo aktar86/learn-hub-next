@@ -7,8 +7,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/lib/authOptions";
 import LogoutBtn from "../Auth/LogoutBtn";
 import AuthBtnNav from "../Auth/AuthBtnNav";
+import Link from "next/link";
 
-const Navbar = async () => {
+const Navbar = () => {
   const links = (
     <>
       <li>
@@ -34,7 +35,12 @@ const Navbar = async () => {
           </ul>
         </nav>
         {/* auth btn */}
-        <AuthBtnNav></AuthBtnNav>
+        <div className="flex justify-between items-center gap-5 ">
+          <Link href="/dashboard" className="py-2 px-5 bg-gray-600">
+            Dashboard
+          </Link>
+          <AuthBtnNav></AuthBtnNav>
+        </div>
       </div>
     </header>
   );
