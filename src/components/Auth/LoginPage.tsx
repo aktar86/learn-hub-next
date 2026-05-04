@@ -53,55 +53,57 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-5 text-black">
-      <div>
-        <h2 className="font-semibold text-2xl">Welcome Back</h2>
-        <p>Please enter your details to sign in.</p>
-      </div>
-      {/* social login */}
-      <GoogleLogin />
-      {/* or operator */}
-      <div className="flex justify-between items-center gap-5">
-        <hr className="border border-gray-300 grow" />{" "}
-        {/* Fixed typo: "brder" -> "border" */}
-        <p>OR</p>
-        <hr className="border border-gray-300 grow" />{" "}
-        {/* Fixed typo: "brder" -> "border" */}
-      </div>
-      {/* email login */}
+    <div className="w-full">
+      <div className="max-w-md mx-auto mt-10 bg-white p-5 text-black">
+        <div>
+          <h2 className="font-semibold text-2xl">Welcome Back</h2>
+          <p>Please enter your details to sign in.</p>
+        </div>
+        {/* social login */}
+        <GoogleLogin />
+        {/* or operator */}
+        <div className="flex justify-between items-center gap-5">
+          <hr className="border border-gray-300 grow" />{" "}
+          {/* Fixed typo: "brder" -> "border" */}
+          <p>OR</p>
+          <hr className="border border-gray-300 grow" />{" "}
+          {/* Fixed typo: "brder" -> "border" */}
+        </div>
+        {/* email login */}
 
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
-          <div>
-            <label className="block"> Email Address</label>
-            <input
-              type="email"
-              {...register("email")}
-              placeholder="example@gmail.com"
-              className="border border-gray-300 outline-0 w-full p-2"
-              required
-              suppressHydrationWarning
-            />
-          </div>
-          {/* Add password field since it's in your interface */}
-          <div>
-            <label className="block">Password</label>
-            <input
-              type="password"
-              {...register("password")}
-              placeholder="Enter your password"
-              className="border border-gray-300 outline-0 w-full p-2"
-              required
-              suppressHydrationWarning
-            />
-          </div>
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+            <div>
+              <label className="block"> Email Address</label>
+              <input
+                type="email"
+                {...register("email")}
+                placeholder="example@gmail.com"
+                className="border border-gray-300 outline-0 w-full p-2"
+                required
+                suppressHydrationWarning
+              />
+            </div>
+            {/* Add password field since it's in your interface */}
+            <div>
+              <label className="block">Password</label>
+              <input
+                type="password"
+                {...register("password")}
+                placeholder="Enter your password"
+                className="border border-gray-300 outline-0 w-full p-2"
+                required
+                suppressHydrationWarning
+              />
+            </div>
 
-          <input
-            type="submit"
-            value={loading ? "Login..." : "Login"}
-            className="p-2 text-center w-full bg-primary text-white "
-          />
-        </form>
+            <input
+              type="submit"
+              value={loading ? "Login..." : "Login"}
+              className="p-2 text-center w-full bg-primary text-white "
+            />
+          </form>
+        </div>
       </div>
     </div>
   );
