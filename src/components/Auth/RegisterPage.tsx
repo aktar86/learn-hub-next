@@ -6,17 +6,6 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import GoogleLogin from "./GoogleLogin";
 
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
-}
-
-interface IFormInput {
-  firstName: string;
-  gender: GenderEnum;
-}
-
 interface FormProps {
   name: string;
   email: string;
@@ -43,7 +32,6 @@ const RegisterPage = () => {
   const searchParams = useSearchParams();
   const callBackUrl = searchParams.get("callbackUrl") || "/";
 
-  // বর্তমানে কোনটি সিলেক্ট করা আছে তা ট্র্যাক করা
   const selectedRole = watch("role");
 
   const onSubmit: SubmitHandler<FormProps> = async (data: FormProps) => {

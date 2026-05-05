@@ -4,11 +4,27 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com", // গুগল ইমেজের জন্য
+        hostname: "lh3.googleusercontent.com",
+        port: "",
+        pathname: "/**", // অর্থাৎ এই ডোমেইনের সব ছবি এলাউড
       },
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com", // গিটহাবের জন্য
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "pixabay.com",
+        port: "",
+        pathname: "/**",
       },
     ],
   },

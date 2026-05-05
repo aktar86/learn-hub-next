@@ -8,6 +8,7 @@ import { authOptions } from "@/src/lib/authOptions";
 import LogoutBtn from "../Auth/LogoutBtn";
 import AuthBtnNav from "../Auth/AuthBtnNav";
 import Link from "next/link";
+import ThemeToggle from "../NextThemeProvider/ThemeToggle";
 
 const Navbar = () => {
   const links = (
@@ -24,8 +25,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <header>
-      <div className="py-10 border-b w-full flex justify-between items-center ">
+    <header className="w-full border-b ">
+      <div className="py-5  max-w-7xl mx-auto flex justify-between items-center ">
         {/* logo */}
         <Logo />
         {/* nav */}
@@ -36,9 +37,8 @@ const Navbar = () => {
         </nav>
         {/* auth btn */}
         <div className="flex justify-between items-center gap-5 ">
-          <Link href="/dashboard" className="py-2 px-5 bg-gray-600">
-            Dashboard
-          </Link>
+          <ThemeToggle />
+          <Link href="/dashboard">Dashboard</Link>
           <AuthBtnNav></AuthBtnNav>
         </div>
       </div>

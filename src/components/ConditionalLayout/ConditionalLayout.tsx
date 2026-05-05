@@ -12,7 +12,7 @@ export default function ConditionalLayout({
   return (
     <>
       {!isDashboard && <Navbar />}
-      {children}
+      <main>{children}</main>
       {!isDashboard && <Footer />}
     </>
   );
