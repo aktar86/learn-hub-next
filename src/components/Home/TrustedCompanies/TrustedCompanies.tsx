@@ -25,7 +25,7 @@ const TrustedCompanies = () => {
   ];
 
   return (
-    <section className="py-12  max-w-7xl mx-auto overflow-hidden ">
+    <section className="py-12   overflow-hidden ">
       <div className="container mx-auto px-4">
         {/* Header Text */}
         <p className="text-center text-xs font-bold tracking-[0.2em] text-gray-500 uppercase mb-10">
@@ -47,6 +47,7 @@ const TrustedCompanies = () => {
           ))}
         </div>
       </div>
+      <hr />
     </section>
   );
 };

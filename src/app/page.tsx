@@ -2,6 +2,8 @@
 // import TestSession from "../components/TestSession/TestSession";
 // import { authOptions } from "../lib/authOptions";
 import HeroBanner from "../components/Home/HeroBanner/HeroBanner";
+import HomeCategories from "../components/Home/HomeCategories/HomeCategories";
+import StartLearning from "../components/Home/StartLearning/StartLearning";
 import TrustedCompanies from "../components/Home/TrustedCompanies/TrustedCompanies";
 // import ThemeToggle from "../components/NextThemeProvider/ThemeToggle";
 
@@ -12,6 +14,8 @@ export default async function Home() {
     <>
       <HeroBanner />
       <TrustedCompanies />
+      <StartLearning />
+      <HomeCategories />
     </>
   );
 }

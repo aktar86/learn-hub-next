@@ -55,7 +55,7 @@ const HeroBanner = () => {
   ];
 
   return (
-    <div className=" w-full max-w-7xl mx-auto  py-8">
+    <div className=" w-full   ">
       <Carousel
         plugins={[
           Autoplay({
@@ -71,14 +71,14 @@ const HeroBanner = () => {
         <CarouselContent>
           {carouselData.map((item) => (
             <CarouselItem key={item.id}>
-              <div className="relative h-[300px] md:h-[500px] w-full overflow-hidden rounded-xl">
+              <div className="relative h-[700px] w-full overflow-hidden ">
                 {/* Image Component */}
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   className="object-cover"
-                  priority={item.id === 1} // প্রথম ছবিটির জন্য প্রায়োরিটি লোডিং
+                  priority={item.id === 1}
                 />
 
                 {/* Overlay Text */}
