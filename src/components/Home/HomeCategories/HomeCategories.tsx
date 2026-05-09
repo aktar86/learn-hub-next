@@ -56,12 +56,31 @@ const HomeCategories = () => {
         <div className="flex justify-between   items-end">
           <div>
             <h2 className="text-xl font-bold">Explore Top Categories</h2>
-            <p className="text-gray-500">Find the path that's for you</p>
+            <p className="text-gray-500">Find the path thats for you</p>
           </div>
           <div className="flex  items-center gap-2  text-blue-600 hover:text-primary">
             <Link href="/allcategories">All Categories</Link>
             <FaArrowRight />
           </div>
+        </div>
+
+        {/* card */}
+        <div className="grid grid-cols-1 md:grid-cols-6 mt-5  gap-4">
+          {categories.map((c, i) => (
+            <div
+              key={i}
+              className="bg-white dark:bg-black p-5 rounded-2xl scale-100 hover:scale-105 transition-all duration-300 hover:shadow-2xl "
+            >
+              <h3
+                style={{ backgroundColor: c.bgColor }}
+                className="w-20 h-20 mx-auto rounded-3xl flex justify-center items-center px-4 py-4"
+              >
+                {c.icon}
+              </h3>
+
+              <p className="text-center mt-5 font-bold">{c.title}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

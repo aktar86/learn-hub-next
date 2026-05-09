@@ -1,31 +1,37 @@
-// import { getServerSession } from "next-auth";
-// import TestSession from "../components/TestSession/TestSession";
-// import { authOptions } from "../lib/authOptions";
+import FeatureCourse from "../components/Home/FeatureCourse/FeatureCourse";
 import HeroBanner from "../components/Home/HeroBanner/HeroBanner";
 import HomeCategories from "../components/Home/HomeCategories/HomeCategories";
+import HowItWorks from "../components/Home/HowItWorks/HowItWorks";
+import NewsletterCTA from "../components/Home/NewsletterCTA/NewsletterCTA";
 import StartLearning from "../components/Home/StartLearning/StartLearning";
+import StatsSection from "../components/Home/StatsSection/StatsSection";
+import Testimonials from "../components/Home/Testimonials/Testimonials";
+import TopInstructors from "../components/Home/TopInstructors/TopInstructors";
 import TrustedCompanies from "../components/Home/TrustedCompanies/TrustedCompanies";
-// import ThemeToggle from "../components/NextThemeProvider/ThemeToggle";
-
-// const session = await getServerSession(authOptions);
 
 export default async function Home() {
   return (
     <>
+      {/* 1 */}
       <HeroBanner />
+      {/* 2 */}
       <TrustedCompanies />
+      {/* 3 */}
+      <StatsSection />
+      {/* 4 */}
       <StartLearning />
+      {/* 5 */}
       <HomeCategories />
+      {/* 6 */}
+      <HowItWorks />
+      {/* 7 */}
+      <FeatureCourse />
+      {/* 8 */}
+      <TopInstructors />
+      {/* 9 */}
+      <Testimonials />
+      {/* 10 */}
+      <NewsletterCTA />
     </>
   );
 }
-
-//  <h1>Home page here</h1>
-//     <div className="border mb-10 border-amber-300">
-//       <h1>Server Session</h1>
-//       <p>{JSON.stringify(session)}</p>
-//     </div>
-//     <div className="border">
-//       <TestSession></TestSession>
-//     </div>
-//     <hr />
