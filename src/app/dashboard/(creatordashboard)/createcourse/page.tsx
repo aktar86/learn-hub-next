@@ -1,7 +1,8 @@
+import CreateCourse from "@/src/components/Dashboard/CreateCourse/CreateCourse";
 import React from "react";
 
-const CreateCourse = () => {
-  return <div>create course</div>;
+const CreateCoursePage = () => {
+  return <CreateCourse />;
 };
 
-export default CreateCourse;
+export default CreateCoursePage;

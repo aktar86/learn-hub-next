@@ -85,7 +85,7 @@ const Testimonials = () => {
   );
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 overflow-hidden">
+    <section className="py-20 bg-linear-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-14">
@@ -96,7 +96,7 @@ const Testimonials = () => {
             What Our Learners Say
           </h2>
           <p className="text-gray-500 dark:text-gray-400 mt-3 text-lg max-w-xl mx-auto">
-            Real results from real people. Join thousands who've already
+            Real results from real people. Join thousands whove already
             transformed their careers.
           </p>
         </div>
