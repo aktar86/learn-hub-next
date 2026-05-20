@@ -83,7 +83,7 @@ const AsideSection = () => {
         <div className="pb-20 flex  flex-col  ">
           <div className="flex gap-2 items-center hover:ml-2 p-2 hover:bg-gray-50 rounded-xl  text-gray-700 transition-all">
             <MessageCircleQuestionMark />
-            <p> Helo Center</p>
+            <p> Help Center</p>
           </div>
           <div className="flex gap-2 items-center hover:ml-2 hover:bg-gray-50 rounded-xl  text-gray-700  p-2 transition-all">
             <LogOut />
