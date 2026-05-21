@@ -5,6 +5,7 @@ export const collection = {
   USERS: "users",
   CART: "cart",
   ORDER: "order",
+  COURSES: "courses",
 } as const;
 
 const uri: string | undefined = process.env.MONGO_URI;
